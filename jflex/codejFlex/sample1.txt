@@ -1,0 +1,12 @@
+ab  = 123
+b = /* Isso nao vai ser reportado */ 456;
+c = a  + b + 789 * 0;
+c;
+Abc = 1.67;
+main(){
+  print 10;
+}
+
+main(){
+  x = + 1 2;
+}
