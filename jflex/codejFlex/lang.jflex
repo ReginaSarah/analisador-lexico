@@ -3,6 +3,11 @@
   *  É nesta seção que se deve incluir imports e declaração de pacotes.
   *  Neste exemplo não temos nada a incluir nesta seção.
   */
+
+  /* Alunos: 
+    Henrique Colonese Echternarcht - 201835028
+    Regina Sarah Monferrari Amorim de Paula - 201835007
+  */
   
 %%
 
@@ -32,10 +37,16 @@
         ntk++;
         return new Token(t, value, yyline+1, yycolumn+1);
     }
+    private int ntks;
+
+    private void incTks() { ++ntks; }
+    private int numTokens() { return ntks; }
+        
 %}
 
 %init{
     ntk = 0; // Isto é copiado direto no construtor do lexer. 
+    
 %init}
 
   
@@ -61,7 +72,7 @@ return = "return"
 
 leituraescrita = "read" | "print"
 
-selecao = "if" | "then" | "else"
+selecao = "if" | "then" | "else" | "while"
 
 btype = "Int" | "Char" | "Bool" | "Float"
 
@@ -77,25 +88,37 @@ Brancos     = {FimDeLinha} | [ \t\f]
 %%
 
 <YYINITIAL>{
+
     {logico}                {  return symbol(TOKEN_TYPE.LOGICO);  }
     {return}                {  return symbol(TOKEN_TYPE.RETURN);  }
-    {leituraescrita}        {  return symbol(TOKEN_TYPE.ID);  }
+    {leituraescrita}        {  return symbol(TOKEN_TYPE.READPRINT);  }
     {selecao}               {  return symbol(TOKEN_TYPE.SELECAO);  } 
     {btype}                 {  return symbol(TOKEN_TYPE.TYPE);  }
+    {parenteses}            { return symbol(TOKEN_TYPE.PARENTESES); } 
+
+
     {identificador}         { return symbol(TOKEN_TYPE.ID);   }
     {nomeDeTipo}            { return symbol(TOKEN_TYPE.IDNOME);   }
-    {numero}                { return symbol(TOKEN_TYPE.NUM, Integer.parseInt(yytext()) );  }
-    {pontoFlutuante}        { return symbol(TOKEN_TYPE.NUM, Float.parseFloat(yytext()) );  }
+    {numero}                { return symbol(TOKEN_TYPE.INT, Integer.parseInt(yytext()) );  }
+    {pontoFlutuante}        { return symbol(TOKEN_TYPE.FLOAT, Float.parseFloat(yytext()) );  }
     {caractere}             { return symbol(TOKEN_TYPE.CARACTERE);  }
-    {parenteses}            { return symbol(TOKEN_TYPE.PARENTESES); } 
+    {separadores}           { return symbol(TOKEN_TYPE.SEPARADOR);  }
+
+
     {relacional}            { return symbol(TOKEN_TYPE.RELACIONAL);  }  
     "="                     { return symbol(TOKEN_TYPE.EQ);   }
     ";"                     { return symbol(TOKEN_TYPE.SEMI); }
     "*"                     { return symbol(TOKEN_TYPE.TIMES); }
     "+"                     { return symbol(TOKEN_TYPE.PLUS); }
+    "-"                     { return symbol(TOKEN_TYPE.MINUS); }
+    "/"                     { return symbol(TOKEN_TYPE.BARRA); }
+    "%"                     { return symbol(TOKEN_TYPE.MOD);  }
+    "&&"                    { return symbol(TOKEN_TYPE.CONJUNCAO);  }
+
     "/*"                    { yybegin(COMMENT);               }
     {Brancos}               { /* Não faz nada  */             }
     {LineComment}           {                       }
+
 }
 
 <COMMENT>{
