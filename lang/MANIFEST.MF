@@ -1,0 +1,3 @@
+Main-Class: analisadorLexico.Main
+Name: analisadorLexico/Main.class
+Java-Bean: True

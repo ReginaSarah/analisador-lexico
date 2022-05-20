@@ -3,6 +3,8 @@ Henrique Colonese Echternarcht - 201835028
 Regina Sarah Monferrari Amorim de Paula - 201835007
 */
 
+package analisadorLexico;
+
 public enum TOKEN_TYPE {
     ID,
     IDNOME,

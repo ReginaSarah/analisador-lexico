@@ -3,9 +3,13 @@ Henrique Colonese Echternarcht - 201835028
 Regina Sarah Monferrari Amorim de Paula - 201835007
 */
 
+package analisadorLexico;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+
+import analisadorLexico.LextTest;
 
 
 public class Main{

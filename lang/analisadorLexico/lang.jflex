@@ -8,17 +8,20 @@
     Henrique Colonese Echternarcht - 201835028
     Regina Sarah Monferrari Amorim de Paula - 201835007
   */
-  
+package analisadorLexico;
+
 %%
 
 %unicode
 %line
 %column
+
 %class LextTest
 %function nextToken
 %type Token
 
 %{
+    
     
     /* Código arbitrário pode ser inserido diretamente no analisador dessa forma. 
      * Aqui podemos declarar variáveis e métodos adicionais que julgarmos necessários. 

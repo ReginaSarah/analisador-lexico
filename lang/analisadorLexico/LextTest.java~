@@ -12,7 +12,8 @@
     Henrique Colonese Echternarcht - 201835028
     Regina Sarah Monferrari Amorim de Paula - 201835007
   */
-  
+package analisadorLexico;
+
 
 // See https://github.com/jflex-de/jflex/issues/222
 @SuppressWarnings("FallThrough")
@@ -547,6 +548,7 @@ class LextTest {
   private boolean zzEOFDone;
 
   /* user code: */
+    
     
     /* Código arbitrário pode ser inserido diretamente no analisador dessa forma. 
      * Aqui podemos declarar variáveis e métodos adicionais que julgarmos necessários. 
